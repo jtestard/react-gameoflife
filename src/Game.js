@@ -75,19 +75,7 @@ class Game extends React.Component {
     }
 
     handleClick = (event) => {
-
-        const elemOffset = this.getElementOffset();
-        const offsetX = event.clientX - elemOffset.x;
-        const offsetY = event.clientY - elemOffset.y;
-        
-        const x = Math.floor(offsetX / CELL_SIZE);
-        const y = Math.floor(offsetY / CELL_SIZE);
-
-        if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
-            this.board[y][x] = !this.board[y][x];
-        }
-
-        this.setState({ cells: this.makeCells() });
+        /*** Handle Click Code ***/
     }
 
     runGame = () => {
@@ -106,23 +94,8 @@ class Game extends React.Component {
     runIteration() {
         let newBoard = this.makeEmptyBoard();
 
-        for (let y = 0; y < this.rows; y++) {
-            for (let x = 0; x < this.cols; x++) {
-                let neighbors = this.calculateNeighbors(this.board, x, y);
-                if (this.board[y][x]) {
-                    if (neighbors === 2 || neighbors === 3) {
-                        newBoard[y][x] = true;
-                    } else {
-                        newBoard[y][x] = false;
-                    }
-                } else {
-                    if (!this.board[y][x] && neighbors === 3) {
-                        newBoard[y][x] = true;
-                    }
-                }
-            }
-        }
-
+        /*** Add Code Here ***/
+        /******/
         this.board = newBoard;
         this.setState({ cells: this.makeCells() });
 
@@ -139,17 +112,8 @@ class Game extends React.Component {
      */
     calculateNeighbors(board, x, y) {
         let neighbors = 0;
-        const dirs = [[-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1]];
-        for (let i = 0; i < dirs.length; i++) {
-            const dir = dirs[i];
-            let y1 = y + dir[0];
-            let x1 = x + dir[1];
-
-            if (x1 >= 0 && x1 < this.cols && y1 >= 0 && y1 < this.rows && board[y1][x1]) {
-                neighbors++;
-            }
-        }
-
+        /*** Add Code Here ***/
+        /******/
         return neighbors;
     }
 
